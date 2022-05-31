@@ -1,15 +1,17 @@
+/**
+ * STATE
+ * DISPATCH - ACTION -> (TYPE, PAYLOAD)
+ * REDUCER
+ * STORE
+ */
+
 // defining const
 const INCREMENT = "INCREMENT";
 const DECREMENT = "DECREMENT";
-const ADD_USER = "ADD_USER";
 
 // state
 const initialCounterState = {
-	counter: 0,
-};
-
-const initialUsersState = {
-	users: [{ name: "Mohammad Tasib" }],
+	count: 0,
 };
 
 // action - Object - type, payload
@@ -25,9 +27,22 @@ const decrementCounter = () => {
 	};
 };
 
-const addUser = () => {
-	return {
-		type: ADD_USER,
-		payload: { name: "Rafi" },
-	};
+// create reducer for counter
+const counterReducer = (state = initialCounterState, action) => {
+	switch (action.type) {
+		case INCREMENT:
+			return {
+				...state,
+				count: state.count + 1,
+			};
+
+		case DECREMENT:
+			return {
+				...state,
+				count: state.count - 1,
+			};
+
+		default:
+			state;
+	}
 };
